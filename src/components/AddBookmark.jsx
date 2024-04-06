@@ -21,7 +21,6 @@ const AddBookmark = ({
             : "translate(0px,0px)",
       }}
       onMouseOver={() => {
-        console.log(myToken);
         setWarning(1);
         setIsOver(!isOver);
       }}

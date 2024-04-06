@@ -61,6 +61,7 @@ const Character = ({
         {charComics.comics.map((comic) => {
           return (
             <ComicCard
+              key={comic._id}
               myToken={myToken}
               elem={comic}
               setWarning={setWarning}

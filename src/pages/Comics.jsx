@@ -5,7 +5,13 @@ import { useState, useEffect } from "react";
 
 import SearchBar from "../components/SearchBar";
 import ComicCard from "../components/ComicCard";
+import NavBar from "../components/NavBar";
+
 const Comics = ({
+  limit,
+  setLimit,
+  skip,
+  setSkip,
   myToken,
   warning,
   setWarning,
@@ -16,26 +22,34 @@ const Comics = ({
   const [comics, setComics] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState("");
-  const url = `http://localhost:3000/comics?title=${title}`;
+  const [count, setCount] = useState(0);
+  const url = `http://localhost:3000/comics?limit=${limit}&skip=${skip}&title=${title}`;
   const fetchComics = async () => {
     const response = await axios.get(url);
     setIsLoading(false);
     setComics(response.data.results);
+    setCount(response.data.count);
   };
   try {
     useEffect(() => {
       fetchComics();
-    }, [title]);
+    }, [title, limit, skip]);
   } catch (error) {
     console.log(error.response);
   }
   return isLoading ? (
-    <h1 className="container">Chargement de la page...</h1>
+    <h1 className="container">Loading...</h1>
   ) : (
     <main className="container">
       <SearchBar setSearch={setTitle} />
+      <NavBar
+        count={count}
+        limit={limit}
+        setSkip={setSkip}
+        setLimit={setLimit}
+      />
       {comics.length === 0 ? (
-        <h1 className="container">Pas de résultat...</h1>
+        <h1 className="container">No result...</h1>
       ) : (
         <div className="comic-page">
           {comics.map((comic) => {

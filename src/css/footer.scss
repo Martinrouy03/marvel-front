@@ -1,0 +1,33 @@
+footer {
+  margin-top: 50px !important;
+  height: 80px;
+  background-color: black;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-left {
+    img {
+      width: 60px;
+      border-radius: 50%;
+    }
+    a {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  .footer-right {
+    img {
+      width: 150px;
+    }
+    span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

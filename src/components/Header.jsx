@@ -2,7 +2,18 @@ import "../css/header.scss";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = ({ setVisibility, myToken, setMyToken }) => {
+const Header = ({
+  setVisibility,
+  myToken,
+  setMyToken,
+  setLimit,
+  setSkip,
+  setWarning,
+}) => {
+  const resetFunc = () => {
+    setLimit(100);
+    setSkip([1, 10]);
+  };
   return (
     <header>
       <div className="container">
@@ -14,10 +25,22 @@ const Header = ({ setVisibility, myToken, setMyToken }) => {
         </Link>
         <section className="page-buttons">
           <Link to="/characters">
-            <button>Characters</button>
+            <button
+              onClick={() => {
+                resetFunc();
+              }}
+            >
+              Characters
+            </button>
           </Link>
           <Link to="/comics/">
-            <button>Comics</button>
+            <button
+              onClick={() => {
+                resetFunc();
+              }}
+            >
+              Comics
+            </button>
           </Link>
           <Link to="/bookmark">
             <button>Bookmarks</button>
@@ -29,6 +52,8 @@ const Header = ({ setVisibility, myToken, setMyToken }) => {
             onClick={() => {
               setMyToken("");
               Cookies.remove("myToken");
+              setWarning(false);
+              setIsOver(false);
             }}
           >
             Logout

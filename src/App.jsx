@@ -32,6 +32,10 @@ function App() {
         myToken={myToken}
         setMyToken={setMyToken}
         setVisibility={setVisibility}
+        setWarning={setWarning}
+        setLimit={setLimit}
+        setSkip={setSkip}
+        setIsOver={setIsOver}
       />
       <Routes>
         <Route path="/" element={<Welcome />} />

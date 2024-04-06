@@ -1,0 +1,28 @@
+.navBar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 0;
+  span {
+    color: darkgray;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  button {
+    border: none;
+    background-color: black;
+    color: lightgray;
+    padding: 4px;
+  }
+  button:hover {
+    background-color: #ed1d24;
+    border-radius: 5px;
+    color: white;
+  }
+  select {
+    background-color: darkgray;
+    padding: 2px;
+    border-radius: 4px;
+  }
+}

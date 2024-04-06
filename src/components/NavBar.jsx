@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../css/navbar.scss";
 const NavBar = ({ count, limit, setSkip, setLimit }) => {
   const [stopNb, setStopNb] = useState([1, 10]);
   const pageNb = Math.ceil(count / limit);
@@ -17,22 +18,32 @@ const NavBar = ({ count, limit, setSkip, setLimit }) => {
         </button>
       );
     }
-
-    console.log(count, pageNb, limit);
-    // console.log(, stopNb[1]);
     pageNb > stopNb[1] &&
       pageButtons.push(
         <button
           onClick={() => {
             const newStopNb = [...stopNb];
-            console.log(newStopNb);
             newStopNb[0] = newStopNb[0] + 10;
             newStopNb[1] = newStopNb[1] + 10;
-            console.log(newStopNb);
             setStopNb(newStopNb);
+            setSkip((newStopNb[0] - 1) * limit);
           }}
         >
           &#62; ...
+        </button>
+      );
+    pageNb - stopNb[1] > 100 &&
+      pageButtons.push(
+        <button
+          onClick={() => {
+            const newStopNb = [...stopNb];
+            newStopNb[0] = newStopNb[0] + 100;
+            newStopNb[1] = newStopNb[1] + 100;
+            setStopNb(newStopNb);
+            setSkip((newStopNb[0] - 1) * limit);
+          }}
+        >
+          &#62; +100
         </button>
       );
     stopNb[0] > 1 &&
@@ -40,18 +51,33 @@ const NavBar = ({ count, limit, setSkip, setLimit }) => {
         <button
           onClick={() => {
             const newStopNb = [...stopNb];
-            console.log(newStopNb);
             newStopNb[0] = newStopNb[0] - 10;
             newStopNb[1] = newStopNb[1] - 10;
-            console.log(newStopNb);
             setStopNb(newStopNb);
+            setSkip((newStopNb[0] - 1) * limit);
           }}
         >
-          &#60; ...
+          ... &#60;
+        </button>
+      );
+
+    stopNb[0] > 100 &&
+      pageButtons.unshift(
+        <button
+          onClick={() => {
+            const newStopNb = [...stopNb];
+            newStopNb[0] = newStopNb[0] - 100;
+            newStopNb[1] = newStopNb[1] - 100;
+            setStopNb(newStopNb);
+            setSkip((newStopNb[0] - 1) * limit);
+          }}
+        >
+          -100 &#60;
         </button>
       );
     return pageButtons;
   };
+
   return (
     <div className="navBar">
       <div className="choose-limit">
@@ -61,6 +87,7 @@ const NavBar = ({ count, limit, setSkip, setLimit }) => {
           id=""
           onChange={(event) => {
             setLimit(event.target.value);
+            setStopNb([1, 10]);
           }}
         >
           <option value="100">100</option>
@@ -68,8 +95,13 @@ const NavBar = ({ count, limit, setSkip, setLimit }) => {
           <option value="20">20</option>
         </select>
       </div>
-      <span>Aller à la page:</span>
-      {pagesLoop(pageNb)}
+      <div className="choose-page">
+        <span>Go to page:</span>
+        {pagesLoop(pageNb)}
+      </div>
+      <div className="totalPages">
+        <span>Number of pages: {pageNb}</span>
+      </div>
     </div>
   );
 };

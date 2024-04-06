@@ -126,7 +126,7 @@ const Bookmark = ({ myToken, setVisibility }) => {
           setVisibility([false, true]);
         }}
       >
-        Login!
+        or Login!
       </button>
       <img src={noToken} alt="" />
     </div>

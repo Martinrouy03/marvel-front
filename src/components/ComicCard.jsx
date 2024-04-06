@@ -7,6 +7,7 @@ const ComicCard = ({
   isOver,
   setIsOver,
 }) => {
+  console.log();
   return (
     <article className="comic-card">
       <img

@@ -1,0 +1,47 @@
+header {
+  height: 70px;
+  position: sticky;
+  top: 0px;
+  display: flex;
+  // transform:tran
+  align-items: center;
+  background-color: black;
+  border-bottom: 1px solid #ed1d24;
+  z-index: 10;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  section {
+    display: flex;
+    gap: 10px;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
+  img {
+    height: 40px;
+  }
+}
+.page-buttons button {
+  background-color: #ed1d24;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+}
+.modal-buttons button {
+  background-color: black;
+  color: #ed1d24;
+}
+
+#logout {
+  background-color: #ed1d24;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+}

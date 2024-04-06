@@ -3,9 +3,17 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AddBookmark from "../components/AddBookmark";
 import ComicCard from "../components/ComicCard";
+import WarningPopUp from "../components/WarningPopUp";
 import "../css/character.scss";
 
-const Comics = () => {
+const Character = ({
+  myToken,
+  warning,
+  setWarning,
+  isOver,
+  setIsOver,
+  setVisibility,
+}) => {
   const { characterId } = useParams();
   const [charComics, setCharComics] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +22,6 @@ const Comics = () => {
     const response = await axios.get(url);
     setIsLoading(false);
     setCharComics(response.data);
-    // console.log(response.data);
   };
   try {
     useEffect(() => {
@@ -41,15 +48,37 @@ const Comics = () => {
           alt=""
         />
         <h1>{charComics.name}</h1>
-        <AddBookmark bookmarkObj={charComics} category="characters" />
+        <AddBookmark
+          myToken={myToken}
+          bookmarkObj={charComics}
+          isOver={isOver}
+          setIsOver={setIsOver}
+          setWarning={setWarning}
+          category="characters"
+        />
       </div>
       <div className="comic-page">
         {charComics.comics.map((comic) => {
-          return <ComicCard elem={comic} />;
+          return (
+            <ComicCard
+              myToken={myToken}
+              elem={comic}
+              setWarning={setWarning}
+              isOver={isOver}
+              setIsOver={setIsOver}
+            />
+          );
         })}
       </div>
+      <WarningPopUp
+        myToken={myToken}
+        warning={warning}
+        setWarning={setWarning}
+        setIsOver={setIsOver}
+        setVisibility={setVisibility}
+      />
     </main>
   );
 };
 
-export default Comics;
+export default Character;

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 import { useState } from "react";
-const Bookmark = (myToken) => {
+const Bookmark = ({ myToken, setVisibility }) => {
   const [charactersData, setCharactersData] = useState(
     localStorage.getItem("characters") &&
       JSON.parse(localStorage.getItem("characters"))
@@ -13,7 +13,7 @@ const Bookmark = (myToken) => {
   const [comicsData, setComicsData] = useState(
     localStorage.getItem("comics") && JSON.parse(localStorage.getItem("comics"))
   );
-  return myToken.myToken ? (
+  return myToken ? (
     charactersData.length > 0 || comicsData.length > 0 ? (
       <main className="container">
         <div className="img-container">
@@ -113,7 +113,21 @@ const Bookmark = (myToken) => {
     )
   ) : (
     <div className="warning-token">
-      <h1>Only for subscribers!</h1>
+      <h1>Subscribe first!</h1>
+      <button
+        onClick={() => {
+          setVisibility([true, false]);
+        }}
+      >
+        Here...
+      </button>
+      <button
+        onClick={() => {
+          setVisibility([false, true]);
+        }}
+      >
+        Login!
+      </button>
       <img src={noToken} alt="" />
     </div>
   );

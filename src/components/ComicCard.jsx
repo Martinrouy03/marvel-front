@@ -1,5 +1,12 @@
 import AddBookmark from "../components/AddBookmark";
-const ComicCard = ({ elem, setWarning, warning, myToken }) => {
+const ComicCard = ({
+  elem,
+  myToken,
+  warning,
+  setWarning,
+  isOver,
+  setIsOver,
+}) => {
   return (
     <article className="comic-card">
       <img
@@ -20,6 +27,8 @@ const ComicCard = ({ elem, setWarning, warning, myToken }) => {
             setWarning={setWarning}
             category="comics"
             warning={warning}
+            isOver={isOver}
+            setIsOver={setIsOver}
           />
         </div>
       </div>

@@ -19,6 +19,7 @@ import Comics from "./pages/Comics";
 import Bookmark from "./pages/Bookmark";
 
 function App() {
+  const [isOver, setIsOver] = useState(false);
   const [warning, setWarning] = useState(0);
   const [visibility, setVisibility] = useState([false, false]);
   const [myToken, setMyToken] = useState(Cookies.get("myToken") || "");
@@ -31,10 +32,22 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/characters" element={<Characters />} />
+        <Route
+          path="/characters"
+          element={<Characters setWarning={setWarning} />}
+        />
         <Route
           path="/comics/:characterId"
-          element={<Character myToken={myToken} setWarning={setWarning} />}
+          element={
+            <Character
+              myToken={myToken}
+              setVisibility={setVisibility}
+              setWarning={setWarning}
+              warning={warning}
+              isOver={isOver}
+              setIsOver={setIsOver}
+            />
+          }
         />
         <Route
           path="/comics"
@@ -44,10 +57,15 @@ function App() {
               warning={warning}
               setVisibility={setVisibility}
               setWarning={setWarning}
+              isOver={isOver}
+              setIsOver={setIsOver}
             />
           }
         />
-        <Route path="/bookmark" element={<Bookmark myToken={myToken} />} />
+        <Route
+          path="/bookmark"
+          element={<Bookmark myToken={myToken} setVisibility={setVisibility} />}
+        />
       </Routes>
       {visibility[0] && (
         <ModalSignUp setVisibility={setVisibility} setMyToken={setMyToken} />

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar";
 import CharacterCard from "../components/CharacterCard";
-const Characters = ({ setWarning }) => {
+const Characters = ({}) => {
   const [characters, setCharacters] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState("");
@@ -31,7 +31,7 @@ const Characters = ({ setWarning }) => {
       ) : (
         <div className="characters-page">
           {characters.map((character) => {
-            return <CharacterCard elem={character} setWarning={setWarning} />;
+            return <CharacterCard elem={character} />;
           })}
         </div>
       )}

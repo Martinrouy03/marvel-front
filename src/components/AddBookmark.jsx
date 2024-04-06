@@ -1,21 +1,27 @@
-import { useState } from "react";
-
-const AddBookmark = ({ bookmarkObj, category, setWarning, myToken }) => {
-  const [isOver, setIsOver] = useState(false);
-
+const AddBookmark = ({
+  bookmarkObj,
+  category,
+  setWarning,
+  myToken,
+  setIsOver,
+  isOver,
+}) => {
   const sign = [Math.random() > 0.5, Math.random() > 0.5];
-  const transX = sign[0] ? Math.random() * 50 + 50 : -(Math.random() * 50 + 50);
-  const transY = sign[1] ? Math.random() * 50 + 50 : -(Math.random() * 50 + 50);
+  const randX = Math.random() * 50 + 50;
+  const randY = Math.random() * 50 + 50;
+  const transX = sign[0] ? randX : -randX;
+  const transY = sign[1] ? randY : -randY;
   return (
     <button
       className="bookmark-button"
       style={{
         transform:
-          isOver && !myToken
+          !myToken && isOver
             ? `translate(${transX}px,${transY}px)`
             : "translate(0px,0px)",
       }}
       onMouseOver={() => {
+        console.log(myToken);
         setWarning(1);
         setIsOver(!isOver);
       }}

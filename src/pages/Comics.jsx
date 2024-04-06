@@ -1,11 +1,18 @@
-import popLaugh from "../assets/laughing.png";
+import WarningPopUp from "../components/WarningPopUp";
 import "../css/comics.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 import SearchBar from "../components/SearchBar";
 import ComicCard from "../components/ComicCard";
-const Comics = ({ myToken, warning, setWarning, setVisibility }) => {
+const Comics = ({
+  myToken,
+  warning,
+  setWarning,
+  setIsOver,
+  isOver,
+  setVisibility,
+}) => {
   const [comics, setComics] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState("");
@@ -39,37 +46,20 @@ const Comics = ({ myToken, warning, setWarning, setVisibility }) => {
                 elem={comic}
                 warning={warning}
                 setWarning={setWarning}
+                isOver={isOver}
+                setIsOver={setIsOver}
               />
             );
           })}
         </div>
       )}
-      <div
-        className="popup-div"
-        style={{
-          transform:
-            warning && !myToken
-              ? "translate(0px,-400px)"
-              : "translate(0px,0px)",
-        }}
-      >
-        <button
-          onClick={() => {
-            setVisibility([false, true]);
-          }}
-        >
-          Login
-        </button>
-        <button
-          onClick={() => {
-            setWarning(false);
-          }}
-        >
-          Fuck OFF
-        </button>
-        <h1>You are not a subscriber?</h1>
-        <img id="pop-up" src={popLaugh} alt="pop-up" />
-      </div>
+      <WarningPopUp
+        warning={warning}
+        setWarning={setWarning}
+        myToken={myToken}
+        setIsOver={setIsOver}
+        setVisibility={setVisibility}
+      />
     </main>
   );
 };

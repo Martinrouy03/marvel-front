@@ -1,0 +1,71 @@
+@media (max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+    .img-container {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .character-card {
+    flex-basis: calc(25% - 20px);
+  }
+}
+
+@media (max-width: 850px) {
+  .character-card {
+    flex-basis: calc(33% - 20px);
+  }
+  .hero img {
+    width: 200px;
+  }
+  .comic-page img {
+    width: 150px;
+    object-fit: contain;
+  }
+  .comic-card {
+    height: 150px;
+    > div {
+      //   padding-left: 10px;
+      padding: 5px !important;
+      > div {
+        h2 {
+          font-size: 18px;
+          height: 20px;
+        }
+        p {
+          font-size: 14px;
+          line-height: 24px;
+          height: 45px;
+          overflow-y: hidden;
+        }
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .nobookmark img {
+    width: 50%;
+    margin-left: 20px;
+  }
+  .warning-token img {
+    width: 70%;
+  }
+}
+@media (max-width: 700px) {
+  .character-card {
+    flex-basis: calc(50% - 20px);
+  }
+  .page-buttons span {
+    display: none;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .bookmark-button span {
+    display: none;
+  }
+}

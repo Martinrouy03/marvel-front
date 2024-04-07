@@ -9,29 +9,27 @@
   box-shadow: 10px 10px 10px gray;
   border-left: 1px solid gray;
   border-top: 1px solid gray;
-  // gap: 30px;
   > div {
     padding: 30px;
     > div {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      // height: 100%;
+      align-items: flex-start;
       gap: 20px;
     }
     h2 {
       color: #ed1d24;
       font-size: 24px;
       font-weight: bold;
+      height: 27px;
+      overflow-y: hidden;
     }
     p {
       font-size: 18px;
       line-height: 24px;
-      height: 90px;
+      height: 95px;
       overflow-y: hidden;
-    }
-    button {
-      align-self: flex-start;
     }
   }
 }

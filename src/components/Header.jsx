@@ -1,6 +1,7 @@
 import "../css/header.scss";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = ({
   setVisibility,
@@ -13,6 +14,7 @@ const Header = ({
   const resetFunc = () => {
     setLimit(100);
     setSkip([1, 10]);
+    setWarning(0);
   };
   return (
     <header>
@@ -24,58 +26,76 @@ const Header = ({
           />
         </Link>
         <section className="page-buttons">
-          <Link to="/characters">
-            <button
-              onClick={() => {
-                resetFunc();
-              }}
-            >
-              Characters
-            </button>
-          </Link>
-          <Link to="/comics/">
-            <button
-              onClick={() => {
-                resetFunc();
-              }}
-            >
-              Comics
-            </button>
-          </Link>
-          <Link to="/bookmark">
-            <button>Bookmarks</button>
-          </Link>
-        </section>
-        {myToken ? (
-          <button
-            id="logout"
+          <Link
+            to="/characters"
             onClick={() => {
-              setMyToken("");
-              Cookies.remove("myToken");
-              setWarning(false);
-              setIsOver(false);
+              resetFunc();
             }}
           >
-            Logout
-          </button>
-        ) : (
-          <section className="modal-buttons">
-            <button
+            <div>
+              <FontAwesomeIcon
+                icon="fa-solid fa-person-walking"
+                style={{ color: "black" }}
+              />
+              <span>Characters</span>
+            </div>
+          </Link>
+          <Link
+            to="/comics/"
+            onClick={() => {
+              resetFunc();
+            }}
+          >
+            <div>
+              <FontAwesomeIcon
+                icon="fa-solid fa-book"
+                style={{ color: "black" }}
+              />
+              <span>Comics</span>
+            </div>
+          </Link>
+          <Link to="/bookmark">
+            <div>
+              <FontAwesomeIcon
+                icon="fa-solid fa-bookmark"
+                style={{ color: "black" }}
+              />
+              <span>Bookmarks</span>
+            </div>
+          </Link>
+        </section>
+        <section className="page-buttons">
+          {myToken ? (
+            <div
               onClick={() => {
-                setVisibility([true, false]);
+                setMyToken("");
+                Cookies.remove("myToken");
+                setWarning(false);
+                setIsOver(false);
               }}
             >
-              Subscribe
-            </button>
-            <button
-              onClick={() => {
-                setVisibility([false, true]);
-              }}
-            >
-              Login
-            </button>
-          </section>
-        )}
+              <FontAwesomeIcon icon="fa-solid fa-door-open" />
+              <span>Logout</span>
+            </div>
+          ) : (
+            <section className="modal-buttons">
+              <button
+                onClick={() => {
+                  setVisibility([true, false]);
+                }}
+              >
+                Subscribe
+              </button>
+              <button
+                onClick={() => {
+                  setVisibility([false, true]);
+                }}
+              >
+                Login
+              </button>
+            </section>
+          )}
+        </section>
       </div>
     </header>
   );

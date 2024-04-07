@@ -1,15 +1,17 @@
 import AddBookmark from "../components/AddBookmark";
-const ComicCard = ({
-  elem,
-  myToken,
-  warning,
-  setWarning,
-  isOver,
-  setIsOver,
-}) => {
-  console.log();
+import { useState } from "react";
+const ComicCard = ({ elem, myToken, setWarning, isOver, setIsOver }) => {
+  const [cardId, setCardId] = useState("");
   return (
-    <article className="comic-card">
+    <article
+      className="comic-card"
+      onMouseEnter={() => {
+        setCardId(elem._id);
+      }}
+      onMouseLeave={() => {
+        setCardId("");
+      }}
+    >
       <img
         src={
           elem.thumbnail.path +
@@ -25,11 +27,11 @@ const ComicCard = ({
           <AddBookmark
             myToken={myToken}
             bookmarkObj={elem}
-            setWarning={setWarning}
             category="comics"
-            warning={warning}
             isOver={isOver}
             setIsOver={setIsOver}
+            cardId={cardId}
+            setWarning={setWarning}
           />
         </div>
       </div>

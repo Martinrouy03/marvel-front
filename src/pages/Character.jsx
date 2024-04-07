@@ -15,6 +15,7 @@ const Character = ({
   setVisibility,
 }) => {
   const { characterId } = useParams();
+  const [cardId, setCardId] = useState("");
   const [charComics, setCharComics] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const url = "http://localhost:3000/comics/" + characterId;
@@ -34,10 +35,17 @@ const Character = ({
     <h1 className="container">Chargement de la page...</h1>
   ) : (
     <main className="container character-page">
-      <div className="hero">
+      <div
+        className="hero"
+        onMouseEnter={() => {
+          setCardId(charComics._id);
+        }}
+        onMouseLeave={() => {
+          setCardId("");
+        }}
+      >
         <h2 style={{ textAlign: "right" }}>
-          {`Retrouve les aventures de ${charComics.name} dans les comics suivants:`}{" "}
-          👉{" "}
+          {`Find out more about ${charComics.name}'s adventures here 👉`}
         </h2>
         <img
           src={
@@ -55,6 +63,7 @@ const Character = ({
           setIsOver={setIsOver}
           setWarning={setWarning}
           category="characters"
+          cardId={cardId}
         />
       </div>
       <div className="comic-page">

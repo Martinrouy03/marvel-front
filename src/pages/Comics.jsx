@@ -58,7 +58,6 @@ const Comics = ({
                 key={comic._id}
                 myToken={myToken}
                 elem={comic}
-                warning={warning}
                 setWarning={setWarning}
                 isOver={isOver}
                 setIsOver={setIsOver}

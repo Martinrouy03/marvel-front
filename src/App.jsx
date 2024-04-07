@@ -1,10 +1,18 @@
 import "./App.scss";
+import "./css/responsive.scss";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+// import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
+import {
+  faXmark,
+  faBook,
+  faPersonWalking,
+  faBookmark,
+  faDoorOpen,
+} from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
-library.add(faXmark);
+library.add(faXmark, faBook, faPersonWalking, faBookmark, faDoorOpen);
 
 // Import components
 import Header from "./components/Header";

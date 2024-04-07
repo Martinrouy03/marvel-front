@@ -3,7 +3,6 @@ import "./css/responsive.scss";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
-// import { faBookmark as farBookmark } from "@fortawesome/free-regular-svg-icons";
 import {
   faXmark,
   faBook,

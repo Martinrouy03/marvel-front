@@ -12,7 +12,7 @@ const Characters = ({ skip, limit, setLimit, setSkip }) => {
   const [count, setCount] = useState(0);
   const fetchCharacters = async () => {
     const response = await axios.get(
-      `http://localhost:3000/characters?limit=${limit}&skip=${skip}&name=${name}`
+      `https://site--marvel-back--nhcf6764t4pv.code.run/characters?limit=${limit}&skip=${skip}&name=${name}`
     );
     setIsLoading(false);
     setCharacters(response.data.results);

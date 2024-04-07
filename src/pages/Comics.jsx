@@ -23,7 +23,7 @@ const Comics = ({
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [count, setCount] = useState(0);
-  const url = `http://localhost:3000/comics?limit=${limit}&skip=${skip}&title=${title}`;
+  const url = `https://site--marvel-back--nhcf6764t4pv.code.run?limit=${limit}&skip=${skip}&title=${title}`;
   const fetchComics = async () => {
     const response = await axios.get(url);
     setIsLoading(false);

@@ -18,7 +18,8 @@ const Character = ({
   const [cardId, setCardId] = useState("");
   const [charComics, setCharComics] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const url = "http://localhost:3000/comics/" + characterId;
+  const url =
+    "https://site--marvel-back--nhcf6764t4pv.code.run/comics/" + characterId;
   const fetchCharComics = async () => {
     const response = await axios.get(url);
     setIsLoading(false);

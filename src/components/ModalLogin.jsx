@@ -13,10 +13,13 @@ const ModalSignUp = ({ setVisibility, setMyToken }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/login/", {
-        email: email,
-        password: pwd,
-      });
+      const response = await axios.post(
+        "https://site--marvel-back--nhcf6764t4pv.code.run/login/",
+        {
+          email: email,
+          password: pwd,
+        }
+      );
       setMyToken(response.data.token);
       Cookies.set("myToken", response.data.token, { expires: 7 });
       setVisibility([false, false]);
